@@ -35,6 +35,9 @@ namespace WaterProject
            });
 
             services.AddScoped<IWaterProjectRepository, EFWaterProjectRepository>();
+            services.AddRazorPages();
+            services.AddDistributedMemoryCache();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,6 +50,8 @@ namespace WaterProject
 
             //Corresponds to the wwwroot
             app.UseStaticFiles();
+
+            app.UseSession(); //Can store a string a byte or int
 
             app.UseRouting();
 
@@ -68,6 +73,8 @@ namespace WaterProject
 
                 //Does the same thing as the ones in the last projects. 
                 endpoints.MapDefaultControllerRoute();
+
+                endpoints.MapRazorPages();
             });
         }
     }

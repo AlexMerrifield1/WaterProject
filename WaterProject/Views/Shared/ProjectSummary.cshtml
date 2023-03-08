@@ -3,22 +3,32 @@
 
 @model Project
 
-    <div class="card card-outline-primary m-1 p-1">
-        <div class="bg-light p-1">
-            <h4>@Model.ProjectName</h4>
+<div class="card card-outline-primary m-1 p-1">
+    <div class="bg-light p-1">
+        <h4>@Model.ProjectName</h4>
 
-            <span class="badge bg-info" style="float:right">
-                Impact: @Model.ProjectImpact Served
-            </span>
-        </div>
-
-
-        <ul>
-            <li>Project Type: @Model.ProjectType</li>
-            <li>Regional Program: @Model.ProjectRegionalProgram</li>
-            <li>Project Phase: @Model.ProjectPhase</li>
-            <li>Project Status: @Model.ProjectFunctionalityStatus</li>
-        </ul>
-
-        <br />
+        <span class="badge bg-info" style="float:right">
+            Impact: @Model.ProjectImpact Served
+        </span>
     </div>
+
+
+    <ul>
+        <li>Project Type: @Model.ProjectType</li>
+        <li>Regional Program: @Model.ProjectRegionalProgram</li>
+        <li>Project Phase: @Model.ProjectPhase</li>
+        <li>Project Status: @Model.ProjectFunctionalityStatus</li>
+    </ul>
+
+    <form method="post" asp-page="/Donate">
+
+        <input type="hidden" asp-for="@Model.ProjectId" />
+        <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()"/>
+
+        <span class="card-text">
+            <button type="submit" class="btn btn-success btn-sm float-end">Donate</button>
+        </span>
+    </form>
+</div>
+
+

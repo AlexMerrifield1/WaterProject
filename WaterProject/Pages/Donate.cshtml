@@ -1,0 +1,40 @@
+﻿@page
+@model WaterProject.Pages.DonateModel
+@{
+}
+
+<h2>Your basket</h2>
+<table class="table table-bordered table-striped">
+
+    <thead>
+        <tr>
+            <th>Item</th>
+            <th>Quatity</th>
+            <th>Cost</th>
+            <th>Subtotal</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach(var i in Model.basket.Items)
+            {
+                <tr>
+                    <td>@i.Project.ProjectName</td>
+                    <td>@i.Quantity</td>
+                    <td>25</td>
+                    <td>@(i.Quantity * 25)</td>
+                </tr>
+            }
+    </tbody>
+
+    <tfoot>
+        <tr>
+            <td colspan="3">Total</td>
+            <td>@Model.basket.CalculateTotal().ToString("c")</td>
+        </tr>
+    </tfoot>
+</table>
+
+<div>
+    <a class="btn btn-primary" href="@Model.ReturnUrl">Continue Donating</a>
+</div>
