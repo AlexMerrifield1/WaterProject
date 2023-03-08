@@ -1,0 +1,16 @@
+﻿@{
+}
+
+@model ProjectsViewModel
+
+<h1>The Water Project</h1>
+
+@foreach (Project p in Model.Projects)
+{
+   <partial name="ProjectSummary" model="p"/>
+}
+
+@*Grabbing page-model from the PaginationTagHelper.cs*@
+<div page-model="@Model.PageInfo" page-action="Index" page-class="btn"
+     page-class-normal="btn-outline-dark" page-class-selected="btn-primary" page-classes-enabled="true"
+     class="btn-group pull-right m-1"></div>
